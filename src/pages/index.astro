@@ -1,16 +1,123 @@
 ---
-
+import "../layouts/one-column.astro";
+import OneColumn from "../layouts/one-column.astro";
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<OneColumn>
+	<!-- HEADER -->
+	<header class="w-full fixed top-0 left-0 bg-secondary mt-2 md:mt-4">
+		<nav
+			class="h-12 flex justify-between items-center max-w-2lg 2lg:mx-auto mx-4"
+		>
+			<div>
+				<ion-icon class="text-5xl" name="trail-sign-outline"></ion-icon>
+			</div>
+
+			<div
+				class="max-md:fixed max-md:top-12 max-md:-right-full max-md:w-3/5 max-md:h-screen max-md:p-6 max-md:bg-secondary
+						 max-md:duration-500 max-md:border-t max-md:border-l max-md:border-t-text max-md:border-l-text max-md:z-10"
+				id="nav-menu"
+			>
+				<ul class="md:flex">
+					<li class="mb-6 md:mb-0 md:ml-6">
+						<a
+							href="#"
+							class="text-text md:text-xl hover:border-b-text hover:border-b"
+							>Home</a
+						>
+					</li>
+					<li class="mb-6 md:mb-0 md:ml-6">
+						<a
+							href="#"
+							class="text-text md:text-xl hover:border-b-text hover:border-b"
+							>About</a
+						>
+					</li>
+					<li class="mb-6 md:mb-0 md:ml-6">
+						<a
+							href="#"
+							class="text-text md:text-xl hover:border-b-text hover:border-b"
+							>Works</a
+						>
+					</li>
+					<li class="mb-6 md:mb-0 md:ml-6">
+						<a
+							href="#"
+							class="text-text md:text-xl hover:border-b-text hover:border-b"
+							>Contacts</a
+						>
+					</li>
+					<li class="mb-6 md:mb-0 md:ml-6">
+						<a
+							href="#"
+							class="text-text md:text-xl hover:border-b-text hover:border-b"
+							>Community</a
+						>
+					</li>
+				</ul>
+			</div>
+
+			<div class="cursor-pointer md:hidden" id="menu-toggle">
+				<ion-icon class="text-2xl" name="menu"></ion-icon>
+			</div>
+		</nav>
+	</header>
+
+	<!-- HOME -->
+	<main>
+		<div
+			class="md:h-screen md:grid-cols-2 h-[calc(100vh-(var(--spacing) * 12))]
+					grid grid-cols-[100%] items-center ml-4 mr-4 max-w-2lg 2lg:ml-auto 2lg:mr-auto"
+		>
+			<div class="pt-8 text-center md:p-0 md:text-left">
+				<h1 class="mb-2 text-first text-base md:text-xl">
+					Hello World
+				</h1>
+				<span class="block mb-6 text-base md:text-xl"
+					>A simple landing page</span
+				>
+
+				<a
+					href="#"
+					class="inline-block py-2 px-6 mb-4 bg-first text-text rounded-3xl
+								   hover:shadow-sm hover:shadow-first hover:duration-500 md:mb-12"
+					>Explore</a
+				>
+
+				<div class="flex justify-center md:justify-normal items-center">
+					<span
+						class="writing-vertical-rl rotate-180 border-l border-text mr-2 px-4 py-1 text-sm md:text-lg -z-10"
+						>Follow me</span
+					>
+					<a href="" class="mr-4 text-text md:text-2xl -z-10"
+						><ion-icon name="logo-github"></ion-icon></a
+					>
+					<a href="" class="mr-4 text-text md:text-2xl -z-10"
+						><ion-icon name="logo-linkedin"></ion-icon></a
+					>
+					<a href="" class="mr-4 text-text md:text-2xl -z-10"
+						><ion-icon name="logo-instagram"></ion-icon></a
+					>
+				</div>
+			</div>
+
+			<div class="p-8">
+				<img src="/test.svg" alt="Test image" />
+			</div>
+		</div>
+	</main>
+	<script is:inline>
+		const showMenu = (toggleId, navId) => {
+			const toggle = document.getElementById(toggleId),
+				nav = document.getElementById(navId);
+
+			if (toggle && nav) {
+				toggle.addEventListener("click", () => {
+					nav.classList.toggle("show");
+				});
+			}
+		};
+
+		showMenu("menu-toggle", "nav-menu");
+	</script>
+</OneColumn>

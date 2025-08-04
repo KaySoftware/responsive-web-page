@@ -1,9 +1,16 @@
 ---
+import '../styles/global.css';
 import "../layouts/one-column.astro";
 import OneColumn from "../layouts/one-column.astro";
+
+const menu = ["Home", "About", "Works", "Contacts", "Community"];
+const pages = [{
+	title: "Product Card",
+	url: "/product-card"
+}]
 ---
 
-<OneColumn>
+<OneColumn bodyClass="mt-12 mx-0 mb-0 text-text bg-secondary">
 	<!-- HEADER -->
 	<header class="w-full fixed top-0 left-0 bg-secondary mt-2 md:mt-4">
 		<nav
@@ -16,44 +23,11 @@ import OneColumn from "../layouts/one-column.astro";
 			<div
 				class="max-md:fixed max-md:top-12 max-md:-right-full max-md:w-3/5 max-md:h-screen max-md:p-6 max-md:bg-secondary
 						 max-md:duration-500 max-md:border-t max-md:border-l max-md:border-t-text max-md:border-l-text max-md:z-10"
-				id="nav-menu"
-			>
+				id="nav-menu">
 				<ul class="md:flex">
-					<li class="mb-6 md:mb-0 md:ml-6">
-						<a
-							href="#"
-							class="text-text md:text-xl hover:border-b-text hover:border-b"
-							>Home</a
-						>
-					</li>
-					<li class="mb-6 md:mb-0 md:ml-6">
-						<a
-							href="#"
-							class="text-text md:text-xl hover:border-b-text hover:border-b"
-							>About</a
-						>
-					</li>
-					<li class="mb-6 md:mb-0 md:ml-6">
-						<a
-							href="#"
-							class="text-text md:text-xl hover:border-b-text hover:border-b"
-							>Works</a
-						>
-					</li>
-					<li class="mb-6 md:mb-0 md:ml-6">
-						<a
-							href="#"
-							class="text-text md:text-xl hover:border-b-text hover:border-b"
-							>Contacts</a
-						>
-					</li>
-					<li class="mb-6 md:mb-0 md:ml-6">
-						<a
-							href="#"
-							class="text-text md:text-xl hover:border-b-text hover:border-b"
-							>Community</a
-						>
-					</li>
+					{menu.map((item) => <li class="mb-6 md:mb-0 md:ml-6">
+						<a href="#" class="text-text md:text-xl hover:border-b-text hover:border-b">{item}</a>
+					</li>)}
 				</ul>
 			</div>
 
@@ -81,30 +55,33 @@ import OneColumn from "../layouts/one-column.astro";
 					href="#"
 					class="inline-block py-2 px-6 mb-4 bg-first text-text rounded-3xl
 								   hover:shadow-sm hover:shadow-first hover:duration-500 md:mb-12"
-					>Explore</a
-				>
+					>Explore</a>
 
 				<div class="flex justify-center md:justify-normal items-center">
 					<span
-						class="writing-vertical-rl rotate-180 border-l border-text mr-2 px-4 py-1 text-sm md:text-lg -z-10"
-						>Follow me: Kaysoftware</span
-					>
-					<a href="" class="mr-4 text-text md:text-2xl -z-10"
+						class="writing-vertical-rl rotate-180 border-l border-text mr-2 px-4 py-1 text-sm md:text-lg">Follow me</span>
+					<a href="" class="mr-4 text-text md:text-2xl"
 						><ion-icon name="logo-github"></ion-icon></a
 					>
-					<a href="" class="mr-4 text-text md:text-2xl -z-10"
+					<a href="https://www.linkedin.com/in/eddy-flores-010b5687/" class="mr-4 text-text md:text-2xl"
 						><ion-icon name="logo-linkedin"></ion-icon></a
 					>
-					<a href="" class="mr-4 text-text md:text-2xl -z-10"
+					<a href="" class="mr-4 text-text md:text-2xl"
 						><ion-icon name="logo-instagram"></ion-icon></a
 					>
 				</div>
 			</div>
 
-			<div class="p-8">
-				<img src="/test.svg" alt="Test image" />
+			<div class="p-4">
+				<img src="/test.svg" height="100%" width="100%" alt="Test image" />
 			</div>
-		</div>
+			<div class="md:col-span-2">
+				<p class="md:text-3xl text-2xl text-first">Web Page links</p>
+				<ul class="mt-2">
+					{pages.map((item) => <li><a href={item.url}>{item.title}</a></li>)}</li>
+				</ul>
+			</div>
+		</div>		
 	</main>
 	<script is:inline>
 		const showMenu = (toggleId, navId) => {

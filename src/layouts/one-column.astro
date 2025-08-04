@@ -1,5 +1,9 @@
 ---
-import "../styles/global.css";
+interface Props {
+	bodyClass?: string;
+}
+
+const { bodyClass } = Astro.props;
 ---
 
 <html lang="en">
@@ -8,9 +12,9 @@ import "../styles/global.css";
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
         <meta name="viewport" content="width=device-width" />
         <meta name="generator" content={Astro.generator} />
-        <title>Astro</title>
+        <title>Responsive web: KaySoftware</title>
     </head>
-    <body class="mt-12 mx-0 mb-0 text-text bg-secondary">
+    <body class={bodyClass}>
         <section>
             <slot />
         </section>

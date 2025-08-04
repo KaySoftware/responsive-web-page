@@ -1,0 +1,64 @@
+---
+import "../styles/product-card.css";
+import OneColumn from "../layouts/one-column.astro";
+
+const items = [
+    {
+        title: "AIR ZOOM PEGASUS",
+        url: "https://picsum.dev//600/400?seed=1",
+        currency: "$",
+        price: "990.00",
+        discount: "749.00",
+        background: "bg-first"
+    },
+    {
+        title: "PLAYSTATION 5",
+        url: "https://picsum.dev//600/400?seed=2",
+        currency: "$",
+        price: "990.00",
+        discount: "749.00",
+        background: "bg-second"
+    },
+    {
+        title: "XBOX 360",
+        url: "https://picsum.dev//600/400?seed=3",
+        currency: "$",
+        price: "990.00",
+        discount: "749.00",
+        background: "bg-third"
+    },
+    {
+        title: "XBOX 360",
+        url: "https://picsum.dev//600/400?seed=4",
+        currency: "$",
+        price: "990.00",
+        discount: "749.00",
+        background: "bg-teal-100"
+    }
+]
+---
+
+<OneColumn bodyClass="mt-4 my-0 mb-0 bg-white text-darker">
+    <h1 class="text-2xl relative my-0 mx-8 xl:my-0 xl:mx-20 after:content-[''] after:absolute after:top-1/2 after:w-20 after:h-0.5 after:ml-1 after:bg-darker">SHOP</h1>
+    <main class="py-8 px-0 grid grid-cols-(--custom-grid-cols) max-w-7xl mx-10 items-center gap-8 xl:mx-auto">
+        {items.map((item) => (
+            <article class="group relative flex flex-col items-center py-6 px-8 rounded-2xl overflow-hidden" class:list={item.background}>
+                <div class="w-3/4 h-auto px-0 py-12 duration-500 group-hover:rotate-(--custom-rotate) group-hover:ml-14 flex justify-center">
+                    <img class="max-w-full h-auto" src={item.url} alt={item.title}>
+                </div>
+                <div class="absolute -left-1/4 top-0 w-14 h-full writing-vertical-rl pr-4 rotate-180 text-center bg-darker text-white font-bold duration-500 
+                            group-hover:left-0">
+                    <p>{item.title}</p>
+                </div>
+                <div class="w-full flex justify-between items-end duration-500 group-hover:ml-14 group-hover:py-0 group-hover:px-6">
+                    <a href="" class="text-2xl text-darker hover:text-accent" ><ion-icon name="heart-outline"></ion-icon></a>
+                    <div>
+                        <span class="block text-center mb-1 text-accent text-xs">{item.currency} {item.price}</span>
+                        <span class="block text-center text-lg font-bold">{item.currency} {item.discount}</span>
+                    </div>
+                    <a href="" class="text-2xl text-darker hover:text-accent"><ion-icon name="cart-outline"></ion-icon></a>
+                </div>
+            </article> 
+        ))}
+    </main>
+</OneColumn>

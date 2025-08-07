@@ -1,19 +1,53 @@
 @import "tailwindcss";
 
 @theme {
-    --color-first: #EA4C65;
-    --color-secondary: #4E2563;
-    --color-text: #fff;
+    --color-first: ;
+    --color-second: ;
+    --color-third: ;
+    --color-accent: ;
+    --color-darker: ;
 
     --breakpoint-2lg: 75rem;
-
     --container-2lg: 75rem;
+
+    --custom-rotate: 30deg;
+
+    --writing-mode-horizontal-tb: horizontal-tb;
+    --writing-mode-vertical-rl: vertical-rl;
+    --writing-mode-vertical-lr: vertical-lr;
+
+    --grid-cols-autofit-55: 55;
+    --webkit-text-stroke-1: 1;
 }
 
-.writing-vertical-rl {
-    writing-mode: vertical-rl;
+@layer theme {
+    [data-theme='main'] {
+        --color-first: #EA4C65;
+        --color-second: #4E2563;
+        --color-text: #fff;
+    }
+    [data-theme='product-card'] {
+        --color-first: #E3F8FF;
+        --color-second: #DCFAFB;
+        --color-third: #FFE8DF;
+        --color-accent: #FF5151;
+        --color-darker: #161616;
+    }
+    [data-theme='gsap-landing-page'] {
+    --color-first: #212121; /* Dark gray */
+    --color-second: #FF69B4; /* Pastel pink */
+    }
 }
 
-.show{
-    right: 0;
+@utility writing-mode-* {
+    writing-mode: --value(--writing-mode-*);
+}
+
+@utility grid-cols-autofit-* {
+    grid-template-columns: repeat(auto-fit, minmax(calc(var(--spacing) * --value(--grid-cols-autofit-*)), 1fr));
+}
+
+@utility webkit-text-stroke-* {
+    -webkit-text-stroke-width: calc(var(--spacing) * --value(--webkit-text-stroke-*));
+    -webkit-text-stroke-color: --value(--color-*);
 }

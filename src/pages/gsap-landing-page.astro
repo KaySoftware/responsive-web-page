@@ -1,0 +1,111 @@
+---
+import "../styles/global.css";
+import "../styles/temp.css";
+import GsapOneColumn from "../layouts/gsap/gsap-one-column.astro";
+---
+
+<GsapOneColumn theme="gsap-landing-page">
+    <!-- HEADER -->
+    <header class="w-full fixed top-0 left-0 bg-first text-white z-50 md:bg-transparent">
+        <nav class="h-14 flex justify-between items-center font-bold md:grid md:grid-cols-[3fr_4fr_1fr] xl:h-[calc(var(--spacing) * 14 + 1.5rem)]
+                    max-w-7xl mx-4 xl:mx-auto">
+            <div class="text-4xl cursor-pointer md:hidden" id="nav-toggle">
+                <ion-icon name="reorder-two-outline"></ion-icon>
+            </div>
+            <div >
+                <a href="" class="text-white">Fashion</a>
+            </div>
+
+            <div class="max-md:fixed max-md:top-14 max-md:-left-full max-md:bg-blue-950 max-md:w-4/5 max-md:h-screen max-md:m-auto max-md:p-8 max-md:z-50 max-md:duration-500" id="nav-menu">
+                <ul class="text-center md:flex">
+                    <li class="mb-8 md:mr-20 md:mb-0"><a href="" class="p-2 text-white">Home</a></li>
+                    <li class="mb-8 md:mr-20 md:mb-0"><a href="" class="p-2 text-white">Woman</a></li>
+                    <li class="mb-8 md:mr-20 md:mb-0"><a href="" class="p-2 text-white">Man</a></li>
+                    <li class="mb-8 md:mr-20 md:mb-0"><a href="" class="p-2 text-white">Explore</a></li>
+                </ul>
+            </div>
+            <div class="text-2xl text-right">
+                <ion-icon name="cart-outline"></ion-icon>
+            </div>
+        </nav>
+    </header>           
+
+    <!-- MAIN -->
+    <main>
+        <!-- HOME -->
+        <div class="relative grid grid-rows-[3fr_1fr] h-[calc(100vh-(var(--spacing) * 14))] md:grid-cols-[4fr_3fr] md:grid-rows-[1fr] md:h-screen">
+            <div class="home__primary w-0 bg-first flex justify-evenly items-center px-4 py-8 md:py-0 md:justify-center">
+                <h1 class="home__title text-5xl md:text-7xl writing-mode-vertical-rl rotate-180 text-white">Fashion Online <br> Store</h1>
+
+                <div class="home__img w-2xs h-auto">
+                    <img class="md:absolute md:w-xs md:top-1/12 md:left-0 md:right-0 md:bottom-0 md:m-auto" src="https://picsum.dev/static/1/600/1200" alt="">
+                </div>
+            </div>
+
+            <div class="home__secondary w-0 bg-second flex items-center justify-center font-bold">
+                <a class="home__scroll absolute left-0 bottom-1/6 text-xs md:text-xl -rotate-90 text-first 
+                          after:content-[''] after:absolute after:top-4/9 after:-left-1/10 after:w-10 after:h-0.5 after:bg-first after:-ml-10
+                          md:text-white after:md:bg-white" href="#about">SCROLL DOWN</a>
+                <span class="home__year text-7xl md:text-9xl text-transparent webkit-text-stroke-1 webkit-text-stroke-first 
+                             md:ml-20 md:writing-mode-vertical-rl">2025</span>
+            </div>
+        </div>
+    </main>
+    <script is:inline>
+        document.addEventListener("DOMContentLoaded", (event) => {
+            const showMenu = (toggleId,navId) =>{
+                const toggle = document.getElementById(toggleId),
+                nav = document.getElementById(navId)
+
+                if(toggle && nav){
+                    toggle.addEventListener('click', ()=>{
+                        nav.classList.toggle('max-md:left-0')
+                    })
+                }
+            }
+            showMenu('nav-toggle','nav-menu')
+
+            // HOME PRIMARY
+            gsap.to(".home__primary", {
+                duration: 2,
+                width: "100%",
+                ease: "expo.inOut"
+            });
+
+            gsap.from(".home__title", {
+                opacity: 0,
+                duration: 2,
+                delay: 1.5,
+                y: 100
+            });
+
+            gsap.from(".home__img img", {
+                opacity: 0,
+                duration: 2,
+                delay: 1.5,
+                y: -100
+            });
+
+            // HOME SECONDARY
+            gsap.to(".home__secondary", {
+                duration: 2.5,
+                width: "100%",
+                ease: "expo.inOut"
+            });
+
+            gsap.from(".home__scroll", {
+                opacity: 0,
+                duration: 3,
+                x: -100
+            });
+
+            gsap.from(".home__year", {
+                opacity: 0, // fixed invalid -1
+                duration: 1.5,
+                delay: 1.5,
+                x: 100
+            });
+    });
+
+    </script>
+</GsapOneColumn>

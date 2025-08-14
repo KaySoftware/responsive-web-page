@@ -4,6 +4,7 @@
     --color-first: ;
     --color-second: ;
     --color-third: ;
+    --color-four: ;
     --color-accent: ;
     --color-darker: ;
 
@@ -15,27 +16,37 @@
     --writing-mode-horizontal-tb: horizontal-tb;
     --writing-mode-vertical-rl: vertical-rl;
     --writing-mode-vertical-lr: vertical-lr;
+    --writing-mode-none: none;
 
     --grid-cols-autofit-55: 55;
+
     --webkit-text-stroke-1: 1;
+
+    --shadow-custom: ;
 }
 
 @layer theme {
     [data-theme='main'] {
         --color-first: #EA4C65;
         --color-second: #4E2563;
-        --color-text: #fff;
     }
     [data-theme='product-card'] {
         --color-first: #E3F8FF;
         --color-second: #DCFAFB;
-        --color-third: #FFE8DF;
+        --color-third: #FFE8DF;0
         --color-accent: #FF5151;
         --color-darker: #161616;
     }
     [data-theme='gsap-landing-page'] {
-    --color-first: #212121; /* Dark gray */
-    --color-second: #FF69B4; /* Pastel pink */
+        --color-first: #212121; /* Dark gray */
+        --color-second: #FF69B4; /* Pastel pink */
+    }
+    [data-theme='gsap-landing-page-car'] {
+        --color-first: #CC0000; /* Tesla red */
+        --color-second: #C7C7C7;
+        --color-third: #141313;
+        --color-four: #ED4C50;
+        --shadow-custom: 0px 10px 24px hsla(0, 0%, 0%, .5);
     }
 }
 

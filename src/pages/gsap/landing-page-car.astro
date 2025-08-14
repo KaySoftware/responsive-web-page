@@ -1,0 +1,149 @@
+---
+import "../../styles/global.css";
+import GsapOneColumn from "../../layouts/gsap/gsap-one-column.astro";
+
+const car = {
+    title: "Tesla",
+    fullName: "Tesla Cybertruck",
+}
+---
+
+<GsapOneColumn theme="gsap-landing-page-car">
+    <header class="w-full fixed top-0 left-0 bg-third text-first z-50">
+        <nav
+            class="h-14 flex justify-between items-center font-bold md:h-20 max-w-7xl mx-4 xl:mx-auto"
+        >
+            <a href="#" class="text-base text-first"> {car.title} </a>
+
+            <div
+                class="max-md:fixed max-md:-top-full max-md:left-0 max-md:bg-third max-md:w-full max-md:px-12 max-md:py-0
+                        max-md:rounded-t-none max-md:rounded-b-2xl max-md:shadow-custom max-md:duration-500"
+                id="nav-menu"
+            >
+                <ul
+                    class="flex flex-col gap-y-8 text-center md:flex-row md:gap-x-10 mb-10 md:mb-0"
+                >
+                    <li>
+                        <a
+                            href=""
+                            class="p-2 text-second transition-colors duration-500 hover:text-first"
+                            >Models</a>
+                    </li>
+                    <li>
+                        <a
+                            href=""
+                            class="p-2 text-second transition-colors duration-500 hover:text-first"
+                            >Brand</a>
+                    </li>
+                    <li>
+                        <a
+                            href=""
+                            class="p-2 text-second transition-colors duration-500 hover:text-first"
+                            >Store</a>
+                    </li>
+                    <li>
+                        <a
+                            href=""
+                            class="p-2 text-second transition-colors duration-500 hover:text-first"
+                            >Experience</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="text-2xl cursor-pointer md:hidden" id="nav-toggle">
+                <ion-icon name="menu-outline"></ion-icon>
+            </div>
+        </nav>
+    </header>
+
+    <main
+        class="h-[calc(100vh-(var(--spacing)*14))] pt-20 md:h-screen md:p-0 max-w-7xl mx-4 xl:mx-auto"
+    >
+        <div
+            class="relative grid-cols-[1fr] gap-y-14 h-full content-end overflow-hidden grid
+                    md:grid-cols-[26rem_21rem] md:grid-rows-[10rem] md:justify-center md:pb-8"
+        >
+            <h1
+                class="absolute top-[3%] text-7xl writing-mode-vertical-rl rotate-180 text-second
+                       md:top-[23%] md:left-0 md:right-0 md:writing-mode-none md:rotate-none md:text-center uppercase title"
+            >
+                {car.title}
+            </h1>
+
+            <div
+                class="absolute top-[7%] left-2/5 w-96 z-10 md:w-xl md:top-[32%] md:left-0 md:right-0 md:mx-auto car__image"
+            >
+                <img
+                    src="https://pngimg.com/d/tesla_cybertruck_PNG4.png"
+                    alt=""
+                />
+            </div>
+
+            <div class="pl-32 pr-8 text-second md:p-0 car__info">
+                <h2 class="text-2xl text-first uppercase">
+                    {car.fullName}
+                </h2>
+                <p>
+                    Lorem ipsum dolor sit amet consect adipiscing elit, commodo
+                    tristique id quisque lobortis facilisi feugiat
+                </p>
+            </div>
+
+            <div class="flex justify-center md:justify-center gap-x-8 pb-4">
+                <div
+                    class="bg-third text-second shadow-custom rounded-2xl text-center w-40 h-40 py-6 px-3 box__medium"
+                >
+                    <ion-icon
+                        name="speedometer-outline"
+                        class="text-[#ED4C50] text-base"></ion-icon>
+                    <h3 class="text-5xl text-white inline-block">3.7</h3>
+                    <span class="text-base mb-2 block">Sec.</span>
+                    <span class="text-xs">0-100 km/h</span>
+                </div>
+
+                <div>
+                    <div
+                        class="bg-third text-second shadow-custom rounded-2xl text-center w-20 h-24 py-3 px-0 mb-2.5 box__small"
+                    >
+                        <ion-icon
+                            name="trending-up-outline"
+                            class="text-[#ED4C50] text-base"></ion-icon>
+                        <h3 class="text-xs text-white inline-block">325</h3>
+                        <span class="block">km/h</span>
+                        <span class="text-xs">Top Speed</span>
+                    </div>
+                    <div
+                        class="bg-third text-second shadow-custom rounded-2xl text-center w-20 h-24 py-3 px-0 mb-2.5 box__small"
+                    >
+                        <ion-icon
+                            name="car-sport-outline"
+                            class="text-[#ED4C50] text-base"></ion-icon>
+                        <h3 class="text-xs text-white inline-block">8.000</h3>
+                        <span class="block">r.p.m</span>
+                        <span class="text-xs">Power</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script is:inline>
+        const showMenu = (toggleId, navId) => {
+            const toggle = document.getElementById(toggleId),
+                nav = document.getElementById(navId);
+
+            if (toggle && nav) {
+                toggle.addEventListener("click", () => {
+                    nav.classList.toggle("top-14!");
+                });
+            }
+        };
+
+        showMenu("nav-toggle", "nav-menu");
+
+        gsap.from(".title", { opacity: -1, duration: 1.5, delay: 1 })
+        gsap.from(".car__image", { opacity: 0, duration: 1, x: 100 })
+        gsap.from(".car__info", { opacity: 0, duration: 1, delay: 1.2, y: -30 })
+        gsap.from(".box__medium", { opacity: 0, duration: 1.5, delay: 1.3, y: -50 })
+        gsap.from(".box__small", { opacity: -1, duration: 1.5, delay: 1.4, y: -50 })
+    </script>
+</GsapOneColumn>
